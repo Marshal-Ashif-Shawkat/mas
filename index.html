@@ -6,20 +6,20 @@
   <title>Marshal Ashif Shawkat | Research Engineer at BUET</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-light: #dbeafe;
-      --primary-dark: #1d4ed8;
-      --accent: #7c3aed;
-      --bg: #f8fafc;
-      --bg-card: #ffffff;
-      --text: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
-      --shadow-hover: 0 4px 12px rgba(37,99,235,0.12), 0 8px 32px rgba(37,99,235,0.08);
+      --primary: #C8401F;
+      --primary-light: #FDE8E3;
+      --primary-dark: #A33318;
+      --accent: #4A7C59;
+      --bg: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --text: #1C1C1C;
+      --text-muted: #6B6560;
+      --border: #E8E2D9;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+      --shadow-hover: 0 4px 12px rgba(200,64,31,0.10), 0 8px 32px rgba(200,64,31,0.07);
       --radius: 12px;
     }
 
@@ -37,16 +37,16 @@
     /* ===== NAVBAR ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
+      background: rgba(250,247,242,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
       height: 60px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .nav-brand { font-weight: 700; font-size: 0.82rem; color: var(--text); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--primary); }
 
     /* ===== HERO ===== */
@@ -59,7 +59,7 @@
       gap: 3rem;
       align-items: center;
     }
-    .hero-text h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 0.4rem; }
+    .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
     .hero-subtitle { font-size: 1.05rem; color: var(--primary); font-weight: 500; margin-bottom: 1.2rem; }
     .hero-bio { color: var(--text-muted); font-size: 0.93rem; max-width: 580px; margin-bottom: 0.9rem; }
     .hero-links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.2rem; }
@@ -78,10 +78,11 @@
 
     .avatar {
       width: 170px; height: 170px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #8B3010 60%, var(--accent) 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem; color: white; font-weight: 700;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.25);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; color: white; font-weight: 700;
+      box-shadow: 0 8px 32px rgba(200,64,31,0.28);
       flex-shrink: 0; overflow: hidden;
     }
 
@@ -90,14 +91,15 @@
     section { margin-bottom: 3.5rem; }
 
     .section-title {
-      font-size: 1.35rem; font-weight: 700; color: var(--text);
-      margin-bottom: 1.4rem; padding-bottom: 0.6rem;
-      border-bottom: 2px solid var(--primary-light);
+      font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+      margin-bottom: 1.6rem; padding-bottom: 0.6rem;
+      border-bottom: 1.5px solid var(--border);
       display: flex; align-items: center; gap: 0.6rem;
+      text-transform: uppercase; letter-spacing: 0.12em;
     }
     .section-title .icon {
-      width: 28px; height: 28px; background: var(--primary-light);
-      border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+      width: 24px; height: 24px; background: var(--primary-light);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
     }
 
     /* ===== RESEARCH GRID ===== */
@@ -109,13 +111,14 @@
       position: relative; overflow: hidden;
     }
     .research-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      border-radius: var(--radius) var(--radius) 0 0;
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+      border-radius: var(--radius) 0 0 var(--radius);
     }
-    .research-card.aug::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-    .research-card.rea::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
-    .research-card.eff::before { background: linear-gradient(90deg, #10b981, #34d399); }
-    .research-card.mul::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .research-card.aug::before { background: #C8401F; }
+    .research-card.rea::before { background: #4A7C59; }
+    .research-card.eff::before { background: #0D9488; }
+    .research-card.mul::before { background: #D97706; }
+    .research-card.ood::before { background: #6366F1; }
     .research-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
     .research-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
     .research-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; }
@@ -128,6 +131,7 @@
     }
     .timeline-content {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
       border-radius: var(--radius); padding: 1.1rem 1.4rem; box-shadow: var(--shadow);
     }
     .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.3rem; }
@@ -139,6 +143,7 @@
     /* ===== COMPANY CARDS ===== */
     .company-card {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
       border-radius: var(--radius); padding: 1.2rem 1.5rem;
       box-shadow: var(--shadow); margin-bottom: 1rem;
       display: flex; gap: 1.2rem; align-items: flex-start; transition: all 0.25s;
@@ -149,7 +154,8 @@
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 0.75rem; color: white; flex-shrink: 0;
     }
-    .logo-mhealth { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+    .logo-mhealth { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+    .logo-dsp { background: linear-gradient(135deg, #6366F1, #4338CA); }
     .company-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
     .company-role { font-size: 0.82rem; color: var(--primary); font-weight: 500; margin-bottom: 0.3rem; }
     .company-project { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 0.2rem; }
@@ -158,6 +164,7 @@
     /* ===== PROJECT CARDS ===== */
     .project-item {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid #D97706;
       border-radius: var(--radius); padding: 1.2rem 1.4rem;
       margin-bottom: 1rem; box-shadow: var(--shadow); transition: all 0.25s;
     }
@@ -178,6 +185,7 @@
     /* ===== PUBLICATIONS ===== */
     .pub-item {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
       border-radius: var(--radius); padding: 1.2rem 1.4rem;
       margin-bottom: 1rem; box-shadow: var(--shadow); transition: all 0.25s;
       display: flex; gap: 1.2rem;
@@ -246,16 +254,21 @@
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.2rem 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem;
     }
-    .service-group h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.7rem; color: var(--primary); }
+    .service-group h3 { font-size: 0.75rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
     .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tag {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 20px; padding: 0.25rem 0.75rem; font-size: 0.8rem; color: var(--text-muted);
+      border-radius: 20px; padding: 0.25rem 0.75rem; font-size: 0.79rem; font-weight: 500;
     }
+    .tag:nth-child(5n+1) { background: #FDE8E3; color: #9A2F17; border: 1px solid #F5C4BB; }
+    .tag:nth-child(5n+2) { background: #E8F0E9; color: #2D5A3D; border: 1px solid #C3D9C7; }
+    .tag:nth-child(5n+3) { background: #FEF3C7; color: #78350F; border: 1px solid #FDE68A; }
+    .tag:nth-child(5n+4) { background: #E0F2FE; color: #075985; border: 1px solid #BAE6FD; }
+    .tag:nth-child(5n+5) { background: #F0FDF4; color: #14532D; border: 1px solid #BBF7D0; }
 
     /* ===== ACTIVITY CARDS ===== */
     .activity-item {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
       border-radius: var(--radius); padding: 1.1rem 1.4rem;
       box-shadow: var(--shadow); margin-bottom: 1rem;
     }
@@ -271,7 +284,7 @@
       border-radius: var(--radius); padding: 1.4rem 1.6rem; box-shadow: var(--shadow);
     }
     .personal-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.7; }
-    .personal-card p:last-child { margin-bottom: 0; color: #0d9488; font-weight: 500; }
+    .personal-card p:last-child { margin-bottom: 0; color: var(--primary); font-weight: 500; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -312,11 +325,12 @@
 <header class="hero">
   <div class="hero-text">
     <h1>Marshal Ashif Shawkat</h1>
-    <p class="hero-subtitle">Research Engineer · mHealth Lab, BUET</p>
+    <p class="hero-subtitle">Research Assistant · DSP Research Lab, BUET</p>
     <p class="hero-bio">
-      I am a Research Engineer at the
-      <a href="https://mhealth.buet.ac.bd/" style="color:var(--primary);text-decoration:none;font-weight:500;">mHealth Lab</a>,
-      Bangladesh University of Engineering and Technology (BUET), working on large-scale medical imaging datasets and AI-driven clinical decision support systems.
+      I am a Research Assistant at the
+      <a href="https://sites.google.com/view/dsp-research-lab/home" style="color:var(--primary);text-decoration:none;font-weight:500;">DSP Research Lab</a>,
+      Bangladesh University of Engineering and Technology (BUET), working on stroke risk prediction from PPG signals using machine learning.
+      Previously, I was a Research Engineer at the <a href="https://mhealth.buet.ac.bd/" style="color:var(--primary);text-decoration:none;font-weight:500;">mHealth Lab</a>, BUET, curating large-scale chest X-ray datasets and driving AI deployment in clinical settings.
       I completed my B.Sc. in Biomedical Engineering from BUET with a GPA of 3.83/4.00 (Rank 7th in class).
     </p>
     <p class="hero-bio">
@@ -327,7 +341,7 @@
     </p>
     <div class="hero-links">
       <a href="mailto:marshalashif21@gmail.com" class="btn btn-primary">✉️ Email</a>
-      <a href="Marshal_CV.pdf" class="btn btn-outline" target="_blank">📄 CV</a>
+      <a href="https://drive.google.com/file/d/1IFklVMf0y0oae4EgaRl716AAolKM-Hlg/view?usp=sharing" class="btn btn-outline" target="_blank">📄 CV</a>
       <a href="https://linkedin.com/in/marshal-ashif-shawkat" class="btn btn-outline" target="_blank">🔗 LinkedIn</a>
       <a href="https://github.com/Marshal-Ashif-Shawkat" class="btn btn-outline" target="_blank">🐙 GitHub</a>
     </div>
@@ -358,6 +372,10 @@
         <h3>👁️ Computer Vision</h3>
         <p>Applying convolutional neural networks, vision transformers, and classical image processing techniques to solve real-world problems in medical and dermoscopic imaging.</p>
       </div>
+      <div class="research-card ood">
+        <h3>🔀 OOD Generalization</h3>
+        <p>Studying how deep learning models generalize to out-of-distribution data, including the roles of weight initialization, data shuffling, loss landscape sharpness, and representation quality in robust generalization.</p>
+      </div>
     </div>
   </section>
 
@@ -383,12 +401,21 @@
   <section id="experience">
     <h2 class="section-title"><span class="icon">💼</span> Experience</h2>
     <div class="company-card">
+      <div class="company-logo logo-dsp">DSP</div>
+      <div class="company-info">
+        <h3><a href="https://sites.google.com/view/dsp-research-lab/home" style="color:var(--text);text-decoration:none;">DSP Research Lab, BUET</a></h3>
+        <div class="company-role">Research Assistant</div>
+        <div class="company-project">📌 Stroke risk prediction from PPG signals using ML; building a prototype to study the effect of external pressure on PPG waveform morphology.</div>
+        <div class="company-date">Dec 2025 – Present · Dhaka, Bangladesh</div>
+      </div>
+    </div>
+    <div class="company-card">
       <div class="company-logo logo-mhealth">mHL</div>
       <div class="company-info">
-        <h3>mHealth Lab, BUET</h3>
+        <h3><a href="https://mhealth.buet.ac.bd/" style="color:var(--text);text-decoration:none;">mHealth Lab, BUET</a></h3>
         <div class="company-role">Research Engineer</div>
         <div class="company-project">📌 Curated a large-scale dataset of 100,000 chest X-ray images from IEDCR; collaborated with radiologists to develop expert-annotated labels; drove pilot deployment of an in-house AI system at a local hospital.</div>
-        <div class="company-date">May 2025 – Present · Dhaka, Bangladesh</div>
+        <div class="company-date">May 2025 – Feb 2026 · Dhaka, Bangladesh</div>
       </div>
     </div>
   </section>
@@ -656,7 +683,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2025 Marshal Ashif Shawkat · mHealth Lab, BUET · <a href="mailto:marshalashif21@gmail.com" style="color:var(--primary);text-decoration:none;">marshalashif21@gmail.com</a></p>
-  <p style="margin-top:0.4rem;color:#94a3b8;">
+  <p style="margin-top:0.4rem;color:var(--text-muted);">
     Thanks <a href="https://probe2.github.io/" style="color:#94a3b8;" target="_blank">Jie He</a> for the original template inspiration.
   </p>
 </footer>
