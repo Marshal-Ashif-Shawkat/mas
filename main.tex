@@ -1,0 +1,360 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+
+% \usepackage{lastpage}
+% \pagestyle{fancy}
+% \fancyhf{} % Clear all header and footer fields
+% \fancyfoot[R]{Page \thepage\ of \pageref{LastPage}}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{center}
+    \textbf{\Huge \scshape Marshal Ashif Shawkat} \\ \vspace{1pt}
++8801521119050 $|$
+\href{mailto:marshalashif21@gmail.com}{\underline{marshalashif21@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/marshal-ashif-shawkat}{\underline{Linkedin}} $|$
+    \href{https://github.com/Marshal-Ashif-Shawkat}{\underline{GitHub}}
+\end{center}
+
+%-----------RESEARCH INTEREST-----------
+\section{Research Interests}
+OOD Generalization, Explainable AI, Multimodal AI, Computer Vision, Medical Image Analysis
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bangladesh University of Engineering and Technology (BUET)}{Dhaka, Bangladesh}
+      {Bachelor of Science in Biomedical Engineering}{Feb. 2020 -- March 2025}
+        \resumeItemListStart
+        \resumeItem{\textbf{GPA}: 3.83/4.00 (Rank 7th in class)}
+        \resumeItem{\textbf{Relevant Coursework}: Complex Variable and Vector Calculus, Computer Programming, Embedded Systems and Interfacing, Linear Algebra, Probability \& Statistics, Physiological Control Systems, Digital Signal Processing, Random Signals and Processes, Medical Imaging, Bioinformatics }
+        \resumeItemListEnd
+    % \resumeSubheading
+    %   {Blinn College}{Bryan, TX}
+    %   {Associate's in Liberal Arts}{Aug. 2014 -- May 2018}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Research Engineer}{May 2025 -- Present}
+      {\href{https://mhealth.buet.ac.bd/}{\underline{mHealth Lab}}, Bangladesh University of Engineering and Technology (BUET)}{Dhaka, Bangladesh}
+      \resumeItemListStart
+        \resumeItem{Curated and organized a large-scale dataset of 100,000 chest X-ray images collected from \href{https://www.iedcr.org/}{\underline{IEDCR}}.}
+        \resumeItem{Collaborated with clinical radiologists to develop expert-annotated labels for chest X-ray datasets.}
+        \resumeItem{Drove the successful pilot implementation of an in-house developed AI system in a local hospital.}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+
+
+  \resumeSubHeadingListEnd
+
+
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeSubheading
+          {Tuberculosis Detection from Chest X-ray Images}{Nov. 2023 -- March 2025}
+          {Undergraduate Thesis $|$ Supervisor: Dr. Taufiq Hasan, Professor, BME, BUET}{\href{https://docs.google.com/presentation/d/13f3dxZg9Jjl3WOYl8g4MrWntY2VWMye5agnI_NJof74/edit?usp=sharing}{\underline{Presentation}} $|$ \href{https://drive.google.com/file/d/1TWlJx9sSsjnYYBhNMV6HZOJEopSiqdPi/view?usp=sharing}{\underline{Thesis book}}}
+          \resumeItemListStart
+            \resumeItem{Trained different types of neural networks, such as convolutional neural networks (VGG, ResNet, DenseNet) and vision transformers (ViT, Masked Autoencoder), both from scratch and through fine-tuning using PyTorch on a tuberculosis dataset.}
+            \resumeItem{Visualized model attention on chest X-ray images during TB detection using Grad-CAM.}
+            \resumeItem{Devised an algorithm to draw bounding boxes from heatmaps and implemented it using OpenCV.}
+            \resumeItem{Calculated the largest eigenvalues to analyze the nature of the loss landscape.}
+            \resumeItem{Computed centered kernel alignment (CKA) to measure similarity between models trained on the same dataset.}
+            \resumeItem{Improved the TB representation of a CNN model by using soft labels from the knowledge distillation method and analyzed the relationship between improved representation and generalization capability on unseen TB datasets.}
+            \resumeItem{Explored how randomness (e.g., weight initialization and batch data shuffling) impacts out-of-distribution (OOD) performance.}
+          \resumeItemListEnd
+
+      \resumeSubheading
+          {GPT-2 Pretraining from Scratch}{Nov. 2025}
+          {Personal project}
+          {\href{https://github.com/Marshal-Ashif-Shawkat/GPT2-multigpu-training}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{Tokenized the Book Corpus dataset using Tiktoken and implemented the GPT-2 model using PyTorch.}
+            \resumeItem{Utilized 4× NVIDIA GPUs on a cloud platform with PyTorch DistributedDataParallel (DDP) for scalable multi-GPU training.}
+            \resumeItem{Developed a custom DataLoader for efficient dataset handling.}
+            \resumeItem{Applied modern techniques like mixed precision training, torch compile, fused AdamW, flash attention, gradient accumulaton etc. to speedup the training process.}
+          \resumeItemListEnd
+      
+      \resumeSubheading
+          {Brain Tumor Classification from Magnetic Resonance Images}{Feb. 2023}
+          {PI: Shoyad Ibn Sabur Khan Nuhash, Assistant Professor, BME, BUET}
+          {\href{https://github.com/Marshal-Ashif-Shawkat/bme-310-project}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{Implemented a custom model \href{https://www.sciencedirect.com/science/article/abs/pii/S0306987719313416}{\underline{BrainMRNet}} from scratch.}
+            \resumeItem{Gained hands-on experience with key deep learning concepts, including attention modules, residual blocks, and hypercolumn techniques to improve model performance.}
+            \resumeItem{Compared the performance of the custom BrainMRNet model against other established architectures (VGG16, ResNet50, DenseNet121) using metrics such as accuracy, AUC, sensitivity, and specificity.}
+            \resumeItem{Developed an interactive Streamlit-based web application enabling local inference: users upload MRI images, the model processes them, and results are displayed in real-time.}
+          \resumeItemListEnd
+
+        \resumeSubheading
+          {ECG Signal Filtering and Heart Rate Measurement}
+          {Sep. 2023}
+          {PI: Dr. Md. Kamrul Hasan, Professor, EEE, BUET}
+          {\href{https://docs.google.com/presentation/d/1VpT7S1HJMHFJr0GzRC9BqJGJsqcuM625PR_l4NaNybw/edit?usp=sharing}{\underline{Presentation}}}
+          \resumeItemListStart
+            \resumeItem{Processed raw ECG signals from the MIT-BIH Arrhythmia Dataset.}
+            \resumeItem{Explored filtering techniques (Butterworth, Chebyshev Type II, IIR Notch, and moving average) to remove baseline wander, powerline interference, and EMG noise from raw ECG signals.}
+            \resumeItem{Applied wavelet transform for accurate QRS complex detection and heart rate estimation.}
+            \resumeItem{Developed a MATLAB GUI application for ECG signal denoising and heart rate measurement.}
+          \resumeItemListEnd
+
+        \resumeSubheading
+          {Block-Based Hair Removal in Dermoscopic Images}{Mar. 2024}
+          {PI: Samiul Based Shuvo, Assistant Professor, BME, BUET}{\href{https://docs.google.com/presentation/d/1H57hG-AVIsTq29g6gixoJ2ojP0UE2dMMcVTA_bPYCaY/edit?usp=sharing}{\underline{Presentation}}}
+          \resumeItemListStart
+            \resumeItem{Implemented and evaluated a block-based algorithm for automatic hair removal in dermoscopic images to improve skin lesion classification.}
+            \resumeItem{Converted RGB images into YIQ color space and applied morphological bottom-hat filtering for hair detection.}
+            \resumeItem{Performed block-wise inpainting using histogram-based pixel replacement followed by morphological closing to reconstruct lesion regions.}
+            \resumeItem{Achieved comparable performance to the reference method (Dull Razor) while maintaining effectiveness across diverse skin tones and varying hair densities.}
+          \resumeItemListEnd
+
+      % \resumeSubheading
+      %     {A Prosthesis Made in Bangladesh for Below-Knee Amputees}{Nov. 2022 -- Nov. 2023}
+      %     {Capstone project $|$ PI: Md. Tazuddin Ahmed, Lecturer, BME, BUET}{\href{https://drive.google.com/file/d/1IqsH1xNqy0TsBKgvCF7swjI1MCUSFqfN/view?usp=sharing}{\underline{Report}} $|$ \href{https://docs.google.com/presentation/d/1Jlb1eLya9C81ZFYEfMOsVJENZ0IbAgThMGCzdn5wPwE/edit?usp=sharing}{\underline{Presentation}}}
+      %     \resumeItemListStart
+      %       \resumeItem{The design used locally available and durable materials like cast nylon and high-density polyethylene (HDPE) chosen to withstand Bangladesh's humid climate.}
+      %       \resumeItem{Conducted comprehensive stress and strain analysis on the prosthetic design using Ansys Static Structural.}
+      %       \resumeItem{Modeled the prosthetic foot as a 2D compliant structure using wide Bézier curves and utilized SOLIDWORKS for design.}
+      %       \resumeItem{Collaborated with healthcare professionals from Centre for the Rehabilitation of the Paralysed and other medical centers to understand clinical needs.}
+      %     \resumeItemListEnd
+
+      % \resumeSubheading
+      %     {Simulation of Contact Lens Drug Delivery to Ocular Tissue}{June 2023 -- Nov. 2023}
+      %     {PI: Shams Nafisa Ali, Assistant Professor, BME, BUET}{\href{https://drive.google.com/file/d/1lU6jxrNAulsvoB8C3hkOXFxYr0U-s25B/view?usp=sharing}{\underline{Report}}}
+      %     \resumeItemListStart
+      %       \resumeItem{Developed a robust computer simulation in COMSOL Multiphysics to model drug delivery to ocular tissue via contact lenses, including the effects of nanoparticles.}
+      %       \resumeItem{Applied fundamental principles of biomedical transport by implementing and solving governing equations for mass transfer, heat transfer, and fluid flow, specifically using the Navier-Stokes equation to represent non-isothermal flow in the aqueous humor.}
+      %       \resumeItem{Validated simulation results for temperature and drug concentration distribution against existing research.}
+      %       \resumeItem{Conducted a mesh independence study to ensure the reliability and stability of the simulation results.}
+      %     \resumeItemListEnd
+
+          
+    \resumeSubHeadingListEnd
+
+
+
+
+%
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming Languages}{: Python, MATLAB, C/C++, R, JavaScript \textit{(in order of proficiency)}} \\
+     \textbf{ML Frameworks}{: PyTorch, TensorFlow/Keras, PyTorch Geometric, JAX \textit{(in order of proficiency)}} \\
+     \textbf{Python Libraries}{: NumPy, pandas, Matplotlib, scikit-learn, OpenCV, Pillow, SciPy, Beautiful Soup, Streamlit} \\
+     \textbf{Software \& Tools}{: GNU/Linux, Bash scripting, LaTeX, Git version control} \\
+     \textbf{Embedded Systems \& Hardware}{: Atmega32 Microcontroller, Arduino, Raspberry Pi} \\
+     \textbf{CAD \& Simulations}{: SOLIDWORKS, FreeCAD, Ansys, COMSOL Multiphysics, Proteus, TINA-TI} \\
+    }}
+ \end{itemize}
+ 
+
+%
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+\textbf{Shawkat, M. A.}, Hasan, M., \& Hasan, T. (2025). Weakly supervised tuberculosis localization in chest X-rays through knowledge distillation. \textit{[Preprint available in arXiv (\href{https://arxiv.org/abs/2512.11057}{\underline{https://arxiv.org/abs/2512.11057}})]}
+
+%-----------LANGUAGE-----------
+\section{Language}
+Bengali (Native), English (IELTS Band 8.0)
+
+%-----------EXTRA-CURRICULAR ACTIVITIES-----------
+\section{Leadership \& Extra-Curricular Activities}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Vice President} $|$ \emph{BUET Biomedical Engineering Society (BMES) Student Chapter}}{Sep. 2024 -- May 2025}
+          \resumeItemListStart
+            \resumeItem{Organized a nationwide scientific article writing competition engaging college and university students.}
+            \resumeItem{Coordinated seminars and outreach programs on topics ranging from breast cancer awareness to student mental health.}
+          \resumeItemListEnd
+          
+      \resumeProjectHeading
+          {\textbf{Science Writer} $|$ \emph{The Royal Scientific Publications Ltd}}{Aug. 2022 -- Present}
+          \resumeItemListStart
+            \resumeItem{Founded a monthly scientific magazine \href{https://the-royal-scientific-publications.com/divention/subscription}{\underline{Divention}} that reached over 10,000 high school \& college students.}
+            \resumeItem{Authored 40+ articles on diverse topics including artificial intelligence and neuroscience to foster scientific curiosity among young readers}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Class Representative} $|$ \emph{Bangladesh University of Engineering and Technology}}{Nov. 2022 -- Nov. 2023}
+          \resumeItemListStart
+          \resumeItem{Proactively served as a liaison between students and faculty, effectively coordinating with professors to optimize class schedules and examination dates for enhanced academic efficiency.}
+          \resumeItem{Advocated for student needs by addressing and resolving critical classroom infrastructure issues, including sound systems and air conditioning}
+          \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+
+%-----------AWARDS & ACHIEVEMENTS-----------
+\section{Awards \& Achievements}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item{
+    $-$ University Merit Scholarship, BUET \\
+    $-$ Regional Winner, Bangladesh Junior Science Olympiad \\
+    $-$ 1st prize, Regional Math Olympiad
+        }
+    }
+ \end{itemize}
+
+ %-----------REFERENCES-----------
+% \section{References}
+%  \begin{itemize}[leftmargin=0.15in, label={}]
+%     \small{
+%     \item{
+% Dr. Taufiq Hasan \\
+% Professor, Department of Biomedical Engineering (BME) \\
+% Director, mHealth Research Group, BUET, Dhaka, Bangladesh. \\
+% Adjunct Faculty, Biomedical Engineering, \\
+% Johns Hopkins University, Baltimore, MD, USA. \\
+% DPhil Supervisor, Nuffield Department of Medicine \\
+% The University of Oxford, UK. \\
+% Email: \href{mailto:taufiq@bme.buet.ac.bd}{\underline{taufiq@bme.buet.ac.bd}}
+% }
+%       \item{
+% Samiul Based Shuvo \\
+% Assistant Professor \\
+% Department of Biomedical Engineering (BME) \\
+% BUET, Dhaka, Bangladesh \\
+% Email: \href{mailto:sbshuvo@bme.buet.ac.bd}{\underline{sbshuvo@bme.buet.ac.bd}}  
+%     }
+%     \item{
+% Dr. Muhammad Tarik Arafat \\
+% Professor and Head of the Department \\
+% Department of Biomedical Engineering (BME) \\
+% BUET, Dhaka, Bangladesh \\
+% Email: \href{mailto:tarikarafat@bme.buet.ac.bd}{\underline{tarikarafat@bme.buet.ac.bd}}  
+% }
+% }
+    
+%  \end{itemize}
+
+
+%-------------------------------------------
+\end{document}

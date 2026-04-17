@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marshal Ashif Shawkat | Research Engineer at BUET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --primary-dark: #1d4ed8;
+      --accent: #7c3aed;
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 4px 12px rgba(37,99,235,0.12), 0 8px 32px rgba(37,99,235,0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 110px 2rem 70px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 0.4rem; }
+    .hero-subtitle { font-size: 1.05rem; color: var(--primary); font-weight: 500; margin-bottom: 1.2rem; }
+    .hero-bio { color: var(--text-muted); font-size: 0.93rem; max-width: 580px; margin-bottom: 0.9rem; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.2rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+
+    .avatar {
+      width: 170px; height: 170px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; color: white; font-weight: 700;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.25);
+      flex-shrink: 0; overflow: hidden;
+    }
+
+    /* ===== MAIN ===== */
+    main { max-width: 1000px; margin: 0 auto; padding: 0 2rem 4rem; }
+    section { margin-bottom: 3.5rem; }
+
+    .section-title {
+      font-size: 1.35rem; font-weight: 700; color: var(--text);
+      margin-bottom: 1.4rem; padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-title .icon {
+      width: 28px; height: 28px; background: var(--primary-light);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+
+    /* ===== RESEARCH GRID ===== */
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .research-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow); transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .research-card.aug::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .research-card.rea::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .research-card.eff::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .research-card.mul::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .research-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .research-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .research-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== TIMELINE ===== */
+    .timeline-item { display: grid; grid-template-columns: auto 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
+      margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .timeline-content {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.4rem; box-shadow: var(--shadow);
+    }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.3rem; }
+    .timeline-title { font-weight: 600; font-size: 0.95rem; }
+    .timeline-date { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; margin-left: 0.5rem; flex-shrink: 0; }
+    .timeline-sub { font-size: 0.85rem; color: var(--primary); font-weight: 500; margin-bottom: 0.3rem; }
+    .timeline-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ===== COMPANY CARDS ===== */
+    .company-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow); margin-bottom: 1rem;
+      display: flex; gap: 1.2rem; align-items: flex-start; transition: all 0.25s;
+    }
+    .company-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .company-logo {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.75rem; color: white; flex-shrink: 0;
+    }
+    .logo-mhealth { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+    .company-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .company-role { font-size: 0.82rem; color: var(--primary); font-weight: 500; margin-bottom: 0.3rem; }
+    .company-project { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+    .company-date { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ===== PROJECT CARDS ===== */
+    .project-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.4rem;
+      margin-bottom: 1rem; box-shadow: var(--shadow); transition: all 0.25s;
+    }
+    .project-item:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem; flex-wrap: wrap; gap: 0.3rem; }
+    .project-title { font-weight: 600; font-size: 0.95rem; }
+    .project-date { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+    .project-sub { font-size: 0.82rem; color: var(--primary); font-weight: 500; margin-bottom: 0.6rem; }
+    .project-item ul { font-size: 0.84rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.75; }
+    .project-links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.7rem; }
+    .project-link {
+      font-size: 0.78rem; font-weight: 500; color: var(--primary);
+      text-decoration: none; border: 1px solid var(--primary-light);
+      border-radius: 4px; padding: 0.1rem 0.5rem; transition: all 0.2s;
+    }
+    .project-link:hover { background: var(--primary-light); }
+
+    /* ===== PUBLICATIONS ===== */
+    .pub-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.4rem;
+      margin-bottom: 1rem; box-shadow: var(--shadow); transition: all 0.25s;
+      display: flex; gap: 1.2rem;
+    }
+    .pub-item:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+
+    .pub-thumb {
+      width: 130px; flex-shrink: 0;
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pub-thumb img { width: 100%; height: 90px; object-fit: cover; display: block; }
+    .pub-thumb-placeholder {
+      width: 130px; height: 90px; flex-shrink: 0;
+      border-radius: 8px; background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; border: 1px solid var(--border);
+    }
+
+    .pub-content { flex: 1; min-width: 0; }
+    .pub-content h4 { font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; line-height: 1.4; }
+    .pub-authors { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+
+    .pub-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .pub-venue {
+      display: inline-block; font-size: 0.78rem; font-weight: 600;
+      color: white; background: var(--primary); border-radius: 4px; padding: 0.15rem 0.55rem;
+    }
+    .pub-venue.preprint { background: #d97706; }
+
+    .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub-link {
+      font-size: 0.78rem; font-weight: 500; color: var(--primary);
+      text-decoration: none; border: 1px solid var(--primary-light);
+      border-radius: 4px; padding: 0.1rem 0.5rem; transition: all 0.2s;
+    }
+    .pub-link:hover { background: var(--primary-light); }
+
+    .pub-abstract {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;
+      margin-top: 0.5rem; display: none;
+    }
+    .pub-abstract.open { display: block; }
+    .toggle-abstract {
+      font-size: 0.78rem; color: var(--text-muted); cursor: pointer;
+      background: none; border: none; padding: 0; margin-top: 0.4rem;
+      text-decoration: underline; text-underline-offset: 2px;
+    }
+    .toggle-abstract:hover { color: var(--primary); }
+
+    /* ===== AWARDS ===== */
+    .award-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.4rem; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;
+    }
+    .award-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .award-name { font-weight: 600; font-size: 0.92rem; }
+    .award-period { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ===== SERVICES ===== */
+    .service-group {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem;
+    }
+    .service-group h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.7rem; color: var(--primary); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 0.25rem 0.75rem; font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    /* ===== ACTIVITY CARDS ===== */
+    .activity-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow); margin-bottom: 1rem;
+    }
+    .activity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.2rem; flex-wrap: wrap; gap: 0.3rem; }
+    .activity-title { font-weight: 600; font-size: 0.95rem; }
+    .activity-date { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+    .activity-org { font-size: 0.83rem; color: var(--primary); font-weight: 500; margin-bottom: 0.5rem; }
+    .activity-item ul { font-size: 0.84rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.75; }
+
+    /* ===== PERSONAL ===== */
+    .personal-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; box-shadow: var(--shadow);
+    }
+    .personal-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.7; }
+    .personal-card p:last-child { margin-bottom: 0; color: #0d9488; font-weight: 500; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center; padding: 2rem; color: var(--text-muted);
+      font-size: 0.82rem; border-top: 1px solid var(--border);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .avatar { margin: 0 auto; }
+      .hero-links { justify-content: center; }
+      .research-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.8rem; }
+      .pub-thumb, .pub-thumb-placeholder { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-brand">Marshal Ashif Shawkat</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#activities">Activities</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <h1>Marshal Ashif Shawkat</h1>
+    <p class="hero-subtitle">Research Engineer · mHealth Lab, BUET</p>
+    <p class="hero-bio">
+      I am a Research Engineer at the
+      <a href="https://mhealth.buet.ac.bd/" style="color:var(--primary);text-decoration:none;font-weight:500;">mHealth Lab</a>,
+      Bangladesh University of Engineering and Technology (BUET), working on large-scale medical imaging datasets and AI-driven clinical decision support systems.
+      I completed my B.Sc. in Biomedical Engineering from BUET with a GPA of 3.83/4.00 (Rank 7th in class).
+    </p>
+    <p class="hero-bio">
+      My research interests lie at the intersection of <strong>Medical Image Analysis</strong>,
+      <strong>Explainable AI</strong>, and <strong>Computer Vision</strong>, with a focus on building
+      accurate and interpretable deep learning models for clinical applications such as tuberculosis
+      detection and brain tumor classification.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:marshalashif21@gmail.com" class="btn btn-primary">✉️ Email</a>
+      <a href="Marshal_CV.pdf" class="btn btn-outline" target="_blank">📄 CV</a>
+      <a href="https://linkedin.com/in/marshal-ashif-shawkat" class="btn btn-outline" target="_blank">🔗 LinkedIn</a>
+      <a href="https://github.com/Marshal-Ashif-Shawkat" class="btn btn-outline" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
+  <div class="avatar">MAS</div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="research">
+    <h2 class="section-title"><span class="icon">🔬</span> Research Interests</h2>
+    <div class="research-grid">
+      <div class="research-card aug">
+        <h3>🩻 Medical Image Analysis</h3>
+        <p>Developing deep learning models for disease detection and localization in chest X-rays and MRI, including tuberculosis detection and weakly supervised localization.</p>
+      </div>
+      <div class="research-card rea">
+        <h3>🧠 Explainable AI</h3>
+        <p>Designing interpretable AI systems using techniques such as Grad-CAM, knowledge distillation, and centered kernel alignment (CKA) to make model decisions transparent for clinical use.</p>
+      </div>
+      <div class="research-card mul">
+        <h3>🖼️ Multimodal AI</h3>
+        <p>Exploring multimodal approaches that fuse imaging data with clinical metadata to improve diagnostic performance and generalization across diverse patient populations.</p>
+      </div>
+      <div class="research-card eff">
+        <h3>👁️ Computer Vision</h3>
+        <p>Applying convolutional neural networks, vision transformers, and classical image processing techniques to solve real-world problems in medical and dermoscopic imaging.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="section-title"><span class="icon">🎓</span> Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">Bangladesh University of Engineering and Technology (BUET)</div>
+            <div class="timeline-date">Feb 2020 – Mar 2025</div>
+          </div>
+          <div class="timeline-sub">B.Sc. in Biomedical Engineering · Dhaka, Bangladesh</div>
+          <div class="timeline-desc">GPA: 3.83/4.00 (Rank 7th in class) &nbsp;·&nbsp; Relevant coursework: Medical Imaging, Digital Signal Processing, Linear Algebra, Probability &amp; Statistics, Bioinformatics, Physiological Control Systems, Embedded Systems</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title"><span class="icon">💼</span> Experience</h2>
+    <div class="company-card">
+      <div class="company-logo logo-mhealth">mHL</div>
+      <div class="company-info">
+        <h3>mHealth Lab, BUET</h3>
+        <div class="company-role">Research Engineer</div>
+        <div class="company-project">📌 Curated a large-scale dataset of 100,000 chest X-ray images from IEDCR; collaborated with radiologists to develop expert-annotated labels; drove pilot deployment of an in-house AI system at a local hospital.</div>
+        <div class="company-date">May 2025 – Present · Dhaka, Bangladesh</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title"><span class="icon">⚙️</span> Projects</h2>
+
+    <!-- Tuberculosis Detection -->
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Tuberculosis Detection from Chest X-ray Images</div>
+        <div class="project-date">Nov 2023 – Mar 2025</div>
+      </div>
+      <div class="project-sub">Undergraduate Thesis &nbsp;·&nbsp; Supervisor: Dr. Taufiq Hasan, Professor, BME, BUET</div>
+      <ul>
+        <li>Trained CNNs (VGG, ResNet, DenseNet) and vision transformers (ViT, Masked Autoencoder) from scratch and via fine-tuning using PyTorch on a tuberculosis dataset.</li>
+        <li>Visualized model attention with Grad-CAM and devised an algorithm to draw bounding boxes from heatmaps using OpenCV.</li>
+        <li>Improved TB representation via knowledge distillation (soft labels) and analyzed the relationship between representation quality and OOD generalization.</li>
+        <li>Computed centered kernel alignment (CKA) to measure inter-model similarity; analyzed loss landscape sharpness via largest eigenvalues.</li>
+        <li>Explored the impact of randomness (weight initialization, batch shuffling) on out-of-distribution performance.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://docs.google.com/presentation/d/13f3dxZg9Jjl3WOYl8g4MrWntY2VWMye5agnI_NJof74/edit?usp=sharing" class="project-link" target="_blank">[Presentation]</a>
+        <a href="https://drive.google.com/file/d/1TWlJx9sSsjnYYBhNMV6HZOJEopSiqdPi/view?usp=sharing" class="project-link" target="_blank">[Thesis Book]</a>
+      </div>
+    </div>
+
+    <!-- GPT-2 Pretraining -->
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">GPT-2 Pretraining from Scratch</div>
+        <div class="project-date">Nov 2025</div>
+      </div>
+      <div class="project-sub">Personal Project</div>
+      <ul>
+        <li>Tokenized the BookCorpus dataset using Tiktoken and implemented the GPT-2 architecture in PyTorch.</li>
+        <li>Utilized 4× NVIDIA GPUs on a cloud platform with PyTorch DistributedDataParallel (DDP) for scalable multi-GPU training.</li>
+        <li>Applied modern training optimizations: mixed precision, <code>torch.compile</code>, fused AdamW, Flash Attention, and gradient accumulation.</li>
+        <li>Built a custom DataLoader for efficient large-scale dataset handling.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/Marshal-Ashif-Shawkat/GPT2-multigpu-training" class="project-link" target="_blank">[GitHub]</a>
+      </div>
+    </div>
+
+    <!-- Brain Tumor Classification -->
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Brain Tumor Classification from Magnetic Resonance Images</div>
+        <div class="project-date">Feb 2023</div>
+      </div>
+      <div class="project-sub">PI: Shoyad Ibn Sabur Khan Nuhash, Assistant Professor, BME, BUET</div>
+      <ul>
+        <li>Implemented a custom model <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306987719313416" style="color:var(--primary);" target="_blank">BrainMRNet</a> from scratch incorporating attention modules, residual blocks, and hypercolumn techniques.</li>
+        <li>Benchmarked BrainMRNet against VGG16, ResNet50, and DenseNet121 using accuracy, AUC, sensitivity, and specificity.</li>
+        <li>Developed an interactive Streamlit web app for real-time local MRI inference.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/Marshal-Ashif-Shawkat/bme-310-project" class="project-link" target="_blank">[GitHub]</a>
+      </div>
+    </div>
+
+    <!-- ECG Signal Filtering -->
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">ECG Signal Filtering and Heart Rate Measurement</div>
+        <div class="project-date">Sep 2023</div>
+      </div>
+      <div class="project-sub">PI: Dr. Md. Kamrul Hasan, Professor, EEE, BUET</div>
+      <ul>
+        <li>Processed raw ECG signals from the MIT-BIH Arrhythmia Dataset and explored Butterworth, Chebyshev Type II, IIR Notch, and moving-average filters to remove noise.</li>
+        <li>Applied wavelet transform for accurate QRS complex detection and heart rate estimation.</li>
+        <li>Developed a MATLAB GUI application for ECG denoising and heart rate measurement.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://docs.google.com/presentation/d/1VpT7S1HJMHFJr0GzRC9BqJGJsqcuM625PR_l4NaNybw/edit?usp=sharing" class="project-link" target="_blank">[Presentation]</a>
+      </div>
+    </div>
+
+    <!-- Hair Removal -->
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Block-Based Hair Removal in Dermoscopic Images</div>
+        <div class="project-date">Mar 2024</div>
+      </div>
+      <div class="project-sub">PI: Samiul Based Shuvo, Assistant Professor, BME, BUET</div>
+      <ul>
+        <li>Implemented a block-based algorithm for automatic hair removal in dermoscopic images using YIQ color space and morphological bottom-hat filtering.</li>
+        <li>Performed block-wise inpainting via histogram-based pixel replacement followed by morphological closing to reconstruct lesion regions.</li>
+        <li>Achieved performance comparable to the Dull Razor baseline across diverse skin tones and hair densities.</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://docs.google.com/presentation/d/1H57hG-AVIsTq29g6gixoJ2ojP0UE2dMMcVTA_bPYCaY/edit?usp=sharing" class="project-link" target="_blank">[Presentation]</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2 class="section-title"><span class="icon">📝</span> Publications</h2>
+
+    <div class="pub-item">
+      <div class="pub-thumb-placeholder">🫁</div>
+      <div class="pub-content">
+        <h4>Weakly Supervised Tuberculosis Localization in Chest X-rays through Knowledge Distillation</h4>
+        <div class="pub-authors"><strong>Shawkat, M. A.</strong>, Hasan, M., &amp; Hasan, T.</div>
+        <div class="pub-meta">
+          <span class="pub-venue preprint">Preprint 2025</span>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2512.11057" class="pub-link" target="_blank">[arXiv]</a>
+          </div>
+        </div>
+        <button class="toggle-abstract" onclick="toggleAbstract(this)">▶ Show abstract</button>
+        <div class="pub-abstract">Tuberculosis (TB) remains one of the leading causes of mortality worldwide, particularly in resource-limited countries. Chest X-ray (CXR) imaging serves as an accessible and cost-effective diagnostic tool but requires expert interpretation, which is often unavailable. Although machine learning models have shown high performance in TB classification, they often depend on spurious correlations and fail to generalize. Besides, building large datasets featuring high-quality annotations for medical images demands substantial resources and input from domain specialists, and typically involves several annotators reaching agreement, which results in enormous financial and logistical expenses. This study repurposes knowledge distillation technique to train CNN models reducing spurious correlations and localize TB-related abnormalities without requiring bounding-box annotations. By leveraging a teacher-student framework with ResNet50 architecture, the proposed method trained on TBX11k dataset achieve impressive 0.2428 mIOU score. Experimental results further reveal that the student model consistently outperforms the teacher, underscoring improved robustness and potential for broader clinical deployment in diverse settings.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- TECHNICAL SKILLS -->
+  <section id="skills">
+    <h2 class="section-title"><span class="icon">🛠️</span> Technical Skills</h2>
+    <div class="service-group">
+      <h3>Programming Languages</h3>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">C/C++</span>
+        <span class="tag">R</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="service-group">
+      <h3>ML Frameworks</h3>
+      <div class="tag-list">
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow / Keras</span>
+        <span class="tag">PyTorch Geometric</span>
+        <span class="tag">JAX</span>
+      </div>
+    </div>
+    <div class="service-group">
+      <h3>Python Libraries</h3>
+      <div class="tag-list">
+        <span class="tag">NumPy</span>
+        <span class="tag">pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Pillow</span>
+        <span class="tag">SciPy</span>
+        <span class="tag">Beautiful Soup</span>
+        <span class="tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="service-group">
+      <h3>Software &amp; Tools</h3>
+      <div class="tag-list">
+        <span class="tag">GNU/Linux</span>
+        <span class="tag">Bash scripting</span>
+        <span class="tag">LaTeX</span>
+        <span class="tag">Git</span>
+      </div>
+    </div>
+    <div class="service-group">
+      <h3>Embedded Systems &amp; Hardware</h3>
+      <div class="tag-list">
+        <span class="tag">Atmega32 Microcontroller</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Raspberry Pi</span>
+      </div>
+    </div>
+    <div class="service-group">
+      <h3>CAD &amp; Simulations</h3>
+      <div class="tag-list">
+        <span class="tag">SOLIDWORKS</span>
+        <span class="tag">FreeCAD</span>
+        <span class="tag">Ansys</span>
+        <span class="tag">COMSOL Multiphysics</span>
+        <span class="tag">Proteus</span>
+        <span class="tag">TINA-TI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <h2 class="section-title"><span class="icon">🏆</span> Awards &amp; Achievements</h2>
+    <div class="award-item">
+      <div class="award-icon">🎓</div>
+      <div>
+        <div class="award-name">University Merit Scholarship</div>
+        <div class="award-period">Bangladesh University of Engineering and Technology (BUET)</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🏅</div>
+      <div>
+        <div class="award-name">Regional Winner — Bangladesh Junior Science Olympiad</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🥇</div>
+      <div>
+        <div class="award-name">1st Prize — Regional Math Olympiad</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP & ACTIVITIES -->
+  <section id="activities">
+    <h2 class="section-title"><span class="icon">🤝</span> Leadership &amp; Activities</h2>
+
+    <div class="activity-item">
+      <div class="activity-header">
+        <div class="activity-title">Vice President</div>
+        <div class="activity-date">Sep 2024 – May 2025</div>
+      </div>
+      <div class="activity-org">BUET Biomedical Engineering Society (BMES) Student Chapter</div>
+      <ul>
+        <li>Organized a nationwide scientific article writing competition engaging college and university students.</li>
+        <li>Coordinated seminars and outreach programs on topics ranging from breast cancer awareness to student mental health.</li>
+      </ul>
+    </div>
+
+    <div class="activity-item">
+      <div class="activity-header">
+        <div class="activity-title">Science Writer</div>
+        <div class="activity-date">Aug 2022 – Present</div>
+      </div>
+      <div class="activity-org">The Royal Scientific Publications Ltd</div>
+      <ul>
+        <li>Founded the monthly scientific magazine <a href="https://the-royal-scientific-publications.com/divention/subscription" style="color:var(--primary);" target="_blank"><em>Divention</em></a>, which reached over 10,000 high school and college students.</li>
+        <li>Authored 40+ articles on topics including artificial intelligence and neuroscience to foster scientific curiosity among young readers.</li>
+      </ul>
+    </div>
+
+    <div class="activity-item">
+      <div class="activity-header">
+        <div class="activity-title">Class Representative</div>
+        <div class="activity-date">Nov 2022 – Nov 2023</div>
+      </div>
+      <div class="activity-org">Bangladesh University of Engineering and Technology (BUET)</div>
+      <ul>
+        <li>Served as liaison between students and faculty; coordinated class schedules and examination dates.</li>
+        <li>Advocated for student needs by resolving classroom infrastructure issues including sound systems and air conditioning.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about">
+    <h2 class="section-title"><span class="icon">😊</span> About Me</h2>
+    <div class="personal-card">
+      <p>I am passionate about using AI to solve real-world problems in healthcare. Outside of research, I enjoy science writing and have founded <em>Divention</em>, a monthly magazine that brings science closer to young readers across Bangladesh. I am fluent in Bengali (native) and English (IELTS Band 8.0).</p>
+      <p>💬 I am open to research collaborations and opportunities. Feel free to reach out via email!</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Marshal Ashif Shawkat · mHealth Lab, BUET · <a href="mailto:marshalashif21@gmail.com" style="color:var(--primary);text-decoration:none;">marshalashif21@gmail.com</a></p>
+  <p style="margin-top:0.4rem;color:#94a3b8;">
+    Thanks <a href="https://probe2.github.io/" style="color:#94a3b8;" target="_blank">Jie He</a> for the original template inspiration.
+  </p>
+</footer>
+
+<script>
+  function toggleAbstract(btn) {
+    const abstract = btn.nextElementSibling;
+    const isOpen = abstract.classList.toggle('open');
+    btn.textContent = isOpen ? '▼ Hide abstract' : '▶ Show abstract';
+  }
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 90) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--primary)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
