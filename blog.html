@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Marshal Ashif Shawkat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #C8401F;
+      --primary-light: #FDE8E3;
+      --primary-dark: #A33318;
+      --accent: #4A7C59;
+      --bg: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --text: #1C1C1C;
+      --text-muted: #6B6560;
+      --border: #E8E2D9;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-weight: 700; font-size: 0.82rem; color: var(--text); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== PAGE ===== */
+    .page-header {
+      padding: 100px 2rem 48px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 800; line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+    main { max-width: 780px; margin: 0 auto; padding: 0 2rem 4rem; }
+
+    .empty-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+    }
+    .empty-state .empty-icon { font-size: 2.8rem; margin-bottom: 1rem; }
+    .empty-state h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .empty-state p { color: var(--text-muted); font-size: 0.9rem; }
+
+    footer {
+      text-align: center; padding: 2rem; color: var(--text-muted);
+      font-size: 0.82rem; border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(250,247,242,0.98); backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border); padding: 0.5rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a { display: block; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+      .page-header { padding: 90px 1.2rem 36px; }
+      .page-header h1 { font-size: 2rem; }
+      main { padding: 0 1.2rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Marshal Ashif Shawkat</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Blog</h1>
+  <p>Thoughts on research, AI, and science writing.</p>
+</div>
+
+<main>
+  <div class="empty-state">
+    <div class="empty-icon">✍️</div>
+    <h2>No posts yet</h2>
+    <p>Check back soon — posts are coming.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Marshal Ashif Shawkat · <a href="mailto:marshalashif21@gmail.com" style="color:var(--primary);text-decoration:none;">marshalashif21@gmail.com</a></p>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
