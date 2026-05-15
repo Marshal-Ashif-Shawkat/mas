@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotes | Marshal Ashif Shawkat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #C8401F;
+      --primary-light: #FDE8E3;
+      --primary-dark: #A33318;
+      --accent: #4A7C59;
+      --bg: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --text: #1C1C1C;
+      --text-muted: #6B6560;
+      --border: #E8E2D9;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+      --shadow-hover: 0 4px 12px rgba(200,64,31,0.10), 0 8px 32px rgba(200,64,31,0.07);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-weight: 700; font-size: 0.82rem; color: var(--text); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== MAIN ===== */
+    .page-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 1.5rem 2rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+    .page-header p { color: var(--text-muted); font-size: 0.92rem; }
+
+    /* ===== QUOTE CARD ===== */
+    .quote-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.8rem 3rem;
+      max-width: 720px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .quote-card.fade-out {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; line-height: 0.6;
+      color: var(--primary-light);
+      margin-bottom: 0.8rem;
+      display: block;
+      user-select: none;
+    }
+
+    .quote-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .quote-original {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-style: italic;
+      border-left: 3px solid var(--border);
+      padding-left: 0.9rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .quote-attribution {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .quote-attribution::before { content: '— '; color: var(--text-muted); font-weight: 400; }
+
+    .quote-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* ===== CONTROLS ===== */
+    .controls {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-shuffle {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-shuffle:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-shuffle:active { transform: translateY(0); }
+
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center; padding: 2rem; color: var(--text-muted);
+      font-size: 0.82rem; border-top: 1px solid var(--border);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(250,247,242,0.98); backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border); padding: 0.5rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a { display: block; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+
+      .page-header h1 { font-size: 1.9rem; }
+      .quote-card { padding: 1.8rem 1.5rem; }
+      .quote-text { font-size: 1.15rem; }
+      .quote-mark { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Marshal Ashif Shawkat</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="quotes.html" class="active">Quotes</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <h1>Favourite Quotes</h1>
+    <p>Words that stuck with me.</p>
+  </div>
+
+  <div class="quote-card" id="quoteCard">
+    <span class="quote-mark">"</span>
+    <p class="quote-text" id="quoteText"></p>
+    <p class="quote-original" id="quoteOriginal" style="display:none"></p>
+    <p class="quote-attribution" id="quoteAttribution"></p>
+    <p class="quote-note" id="quoteNote" style="display:none"></p>
+  </div>
+
+  <div class="controls">
+    <button class="btn-shuffle" id="shuffleBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="3" ry="3"/>
+        <circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>
+      </svg>
+      New quote
+    </button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Marshal Ashif Shawkat · <a href="mailto:marshalashif21@gmail.com" style="color:var(--primary);text-decoration:none;">marshalashif21@gmail.com</a></p>
+</footer>
+
+<script>
+  const quotes = [
+    // ── On Life & Living ──────────────────────────────────────────────────────
+    {
+      text: "When a person's shadow grows larger than themselves, know that the sun is about to set.",
+      original: "মানুষের ছায়া যখন তার চেয়ে বড় হয়ে যায় তখন বুঝতে হবে সূর্য অস্ত যেতে বসেছে।",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "Bound by the limited span between birth and death — and yet humanity carries an eternal hunger for immortality.",
+      original: "জন্ম আর মৃত্যুর সীমাবদ্ধ সময় দিয়ে বাঁধা হাত পা। তারপরেও অমরত্বের প্রতি মানুষের চিরকালীন ক্ষুধা।",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "Very little is needed to make a happy life; it is all within yourself, in your way of thinking.",
+      author: "Marcus Aurelius, Meditations",
+      category: "On Life & Living"
+    },
+    {
+      text: "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+      author: "Mahatma Gandhi",
+      category: "On Life & Living"
+    },
+    {
+      text: "Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do.",
+      author: "Mark Twain",
+      category: "On Life & Living"
+    },
+    {
+      text: "What matters in life is not what happened to you, but what you remember and how you remember it.",
+      author: "Gabriel García Márquez",
+      category: "On Life & Living"
+    },
+    {
+      text: "No one is free, even the birds are chained to the sky.",
+      author: "Bob Dylan",
+      category: "On Life & Living"
+    },
+    {
+      text: "Life begins at the end of your comfort zone.",
+      author: "Neale Donald Walsch",
+      category: "On Life & Living"
+    },
+    {
+      text: "I don't want to survive. I want to live.",
+      author: "Solomon Northup (12 Years a Slave, 2013)",
+      category: "On Life & Living"
+    },
+    {
+      text: "If you enjoy the time you wasted, you didn't waste any time.",
+      author: "Marthe Troly-Curtin, Phrynette Married (1912)",
+      note: "Widely and incorrectly attributed to John Lennon.",
+      category: "On Life & Living"
+    },
+    {
+      text: "Love is not about finding the right person. Love is all about becoming the right person.",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "If you think someone is perfect, you don't know the person very well.",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "When we already believe the world to be a certain way, we interpret new experiences to fit with those beliefs.",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "You can't change that you have to face a ton of failures and problems on your journey, but you can change how you approach them — and it will make all the difference.",
+      author: "Anonymous",
+      category: "On Life & Living"
+    },
+    {
+      text: "Always remember, life is like a book. Some chapters will break you, some will make you smile, and some will change you forever. But every page, good or bad, is part of the story that makes you who you are. So don't close the book too soon. Your best chapter might be the next one.",
+      author: "Anonymous",
+      note: "Widely and incorrectly attributed to Nelson Mandela; not found in any verified Mandela source.",
+      category: "On Life & Living"
+    },
+
+    // ── On Learning & Education ───────────────────────────────────────────────
+    {
+      text: "Formal education will make you a living; self-education will make you a fortune.",
+      author: "Jim Rohn",
+      category: "On Learning & Education"
+    },
+    {
+      text: "Education is the kindling of a flame, not the filling of a vessel.",
+      author: "Socrates (attributed)",
+      category: "On Learning & Education"
+    },
+    {
+      text: "A student is not a vessel you have to fill, but a torch you have to light up.",
+      author: "Paraphrase of Plutarch",
+      note: 'Original: "The mind is not a vessel to be filled, but a fire to be kindled."',
+      category: "On Learning & Education"
+    },
+    {
+      text: "Being good at math doesn't mean being fast at math.",
+      author: "Anonymous",
+      note: "A sentiment widely championed by mathematician and educator Jo Boaler.",
+      category: "On Learning & Education"
+    },
+    {
+      text: "The first purpose of any education system is to create a life-long desire for learning.",
+      author: "Anonymous",
+      category: "On Learning & Education"
+    },
+    {
+      text: "My definition of 'young' is anyone under the age of 100.",
+      original: "আমার কাছে \"তরুণ\"-এর সংজ্ঞা হচ্ছে যার বয়স ১০০ বছরের কম।",
+      author: "Andrew Ng",
+      category: "On Learning & Education"
+    },
+    {
+      text: "One who finds joy in thinking is truly cultured.",
+      original: "ভাবতে যার ভাল লাগে সেই সংস্কৃতিমনস্ক।",
+      author: "Chandril Bhattacharya",
+      category: "On Learning & Education"
+    },
+    {
+      text: "Building habits is more important than building skills.",
+      author: "Sadman Sadik",
+      category: "On Learning & Education"
+    },
+    {
+      text: "If you believe you can change — if you make it a habit — the change becomes real.",
+      author: "Charles Duhigg, The Power of Habit",
+      category: "On Learning & Education"
+    },
+    {
+      text: "Unless we make conscious, strategic decisions about what we consume, we'll always be at the mercy of what others want us to see.",
+      author: "Tiago Forte",
+      category: "On Learning & Education"
+    },
+    {
+      text: "If you think something is true, try really hard to disprove it.",
+      author: "Anonymous",
+      category: "On Learning & Education"
+    },
+    {
+      text: "Luck = when opportunity meets preparation.",
+      author: "Anonymous",
+      category: "On Learning & Education"
+    },
+    {
+      text: "I assume you know what NERD means, right? Naturally Endowed for Research and Development. And of course you know that NERDs are the people that make our world such a nice place to live in.",
+      author: "Unattributed (from a MATLAB programming course)",
+      category: "On Learning & Education"
+    },
+
+    // ── On Wealth & Simplicity ────────────────────────────────────────────────
+    {
+      text: "It is not the man who has too little, but the man who craves more, that is poor.",
+      author: "Seneca",
+      category: "On Wealth & Simplicity"
+    },
+    {
+      text: "There are two ways to be rich: one is by acquiring much, and the other is by desiring little.",
+      author: "Jackie French Koller",
+      category: "On Wealth & Simplicity"
+    },
+    {
+      text: "Rich people have small TVs and big libraries, and poor people have big TVs and small libraries.",
+      author: "Zig Ziglar",
+      category: "On Wealth & Simplicity"
+    },
+    {
+      text: "The real measure of your wealth is how much you'd be worth if you lost all your money.",
+      author: "Anonymous",
+      category: "On Wealth & Simplicity"
+    },
+    {
+      text: "Love people. Use things. The opposite never works.",
+      author: "The Minimalists (Joshua Fields Millburn & Ryan Nicodemus)",
+      category: "On Wealth & Simplicity"
+    },
+    {
+      text: "The world has enough for everyone's need, but not enough for everyone's greed.",
+      author: "Attributed to Mahatma Gandhi",
+      note: "The exact phrasing is unverified in Gandhi's collected works, though the sentiment is consistent with his documented writings.",
+      category: "On Wealth & Simplicity"
+    },
+
+    // ── On Science, Technology & Engineering ─────────────────────────────────
+    {
+      text: "You find C++ applications everywhere — from the bottom of the oceans to the surface of Mars.",
+      author: "Bjarne Stroustrup",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "Biologists are just a bunch of cells talking about other cells.",
+      author: "Popular saying, author unknown",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "If you dislike bacteria, know that you are living on the wrong planet.",
+      original: "তুমি যদি ব্যাক্টেরিয়াকে অপছন্দ করে থাক, তাহলে জেনে রেখ তুমি ভুল গ্রহে বাস করছ।",
+      author: "Stewart Brand",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "The act of measuring something creates the reality that we observe.",
+      author: "Observer Effect, Quantum Physics",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "I am not a visionary. I do not have a 5-year plan. I'm an engineer. I'm perfectly happy with the people who are wandering around looking at the stars and saying 'I want to go there.' But I am looking at the ground, and I want to fix the pothole before I fall in.",
+      author: "Linus Torvalds",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "You are an engineer not because a piece of paper with a grade on it says you have the right percentage to be an engineer. You are an engineer because you are passionate about people and the environment, and about bringing those together in a sustainable and durable way.",
+      author: "Philippe Rival",
+      category: "On Science & Engineering"
+    },
+    {
+      text: "A technologist must not get lost in their own technology. They must know how to enjoy life. And life is art, theatre, music — and above all, life is people.",
+      original: "একজন প্রযুক্তিবিদের আপন প্রযুক্তিতে হারিয়ে যাওয়া উচিত নয়। তাকে অবশ্যই জীবনকে উপভোগ করতে জানতে হবে। আর জীবন হলো শিল্প, নাটক, সঙ্গীত এবং সবচেয়ে বড় কথা, জীবন হলো মানুষ।",
+      author: "F.R. Khan (Fazlur Rahman Khan)",
+      category: "On Science & Engineering"
+    },
+
+    // ── On Humanity & Society ─────────────────────────────────────────────────
+    {
+      text: "The population is growing, but humanity is not.",
+      original: "দেশে জনসংখ্যা বাড়ছে, মানুষ বাড়ছে না।",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "What is humanity's goal — the development and expansion of human values, or aimless mechanical transformation?",
+      original: "মানব জাতির লক্ষ্য কী? মানবিকতার বিকাশ ও তার সম্প্রসারণ নাকি লক্ষ্যহীন যান্ত্রিক রূপান্তর।",
+      author: "Yuval Noah Harari, preface to Sapiens",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "The purpose of a corporation is to create profitable solutions to the problems of people and the planet.",
+      original: "মানুষ ও পৃথিবীর সমস্যার জন্য লাভজনক সমাধান তৈরিই করপোরেশনের উদ্দেশ্য।",
+      author: "Satya Nadella",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "Are we flawed because our system is flawed, or is our system flawed because we are?",
+      original: "আমাদের সিস্টেম খারাপ বলে আমরা খারাপ, নাকি আমরা খারাপ বলে সিস্টেম খারাপ!",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "If people got everything they desired, life itself would become meaningless.",
+      original: "মানুষ যা চায় তা পাওয়া হয়ে গেলে বেঁচে থাকা অর্থহীন হয়ে যেত।",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "If I am lower than even a beast, do I not still have the right to live?",
+      original: "আমি যদি পশুর চাইতেও অধম হই, আমার কি তবে বাঁচার অধিকার নেই?",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "The ultimate resources are people's time and attention, and everyone is trying to get as much of it as possible.",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "Poverty is more photogenic than prosperity.",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "We are all villains in someone's story.",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "Being savage is an immature person's delusion of intellectual dominance.",
+      author: "Sadman Sadik",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "Be less curious about people and more curious about ideas.",
+      author: "Marie Curie",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "Focus on your input, not the output. Our input we can control; our output we can't, because chance keeps sticking its oar in.",
+      author: "Anonymous",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "If you can't do great things, do small things in a great way.",
+      author: "Attributed to Ashik Sir (CSE)",
+      note: "Also attributed to Napoleon Hill and others.",
+      category: "On Humanity & Society"
+    },
+    {
+      text: "If a man is called to be a street sweeper, he should sweep streets even as Michelangelo painted, or Beethoven composed music, or Shakespeare wrote poetry. He should sweep streets so well that all the hosts of heaven and earth will pause to say: here lived a great street sweeper who did his job well.",
+      original: "যদি কেউ রাস্তার ঝাড়ুদার হন, তিনি এমন সুন্দরভাবে রাস্তা ঝাড়ু দেবেন যেন মাইকেল্যাঞ্জেলো ছবি আঁকছেন, বিটোফেন সুর সৃষ্টি করছেন, শেক্‌সপিয়ার কবিতা রচনা করছেন।",
+      author: "Martin Luther King Jr.",
+      category: "On Humanity & Society"
+    },
+
+    // ── Lessons from Invent and Wander ───────────────────────────────────────
+    {
+      text: "We humans coevolve with our tools. We change our tools, and then our tools change us.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "My grandfather looked at me, and after a bit of silence, he gently and calmly said: 'Jeff, one day you'll understand that it's harder to be kind than clever.'",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "The way you earn trust, the way you develop a reputation, is by doing hard things well — over and over and over.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "To invent you have to experiment, and if you know in advance that it's going to work, it's not an experiment.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "We believe that it's technology married with the humanities that yields us the result that makes our heart sing.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "Smart people are a dime a dozen and often don't amount to much. What counts is being creative and imaginative.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "Most of the inventing we do at Amazon goes like this: somebody has an idea, other people improve the idea, other people come up with objections for why it can never work, and then we solve those objections.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "You have to use heart and intuition. There has to be risk-taking. You have to have instinct. All the good decisions have to be made that way.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "I won't list all of our failed experiments, but the big winners pay for thousands of failed experiments.",
+      author: "Jeff Bezos, Invent and Wander",
+      category: "Invent and Wander"
+    },
+    {
+      text: "When something bad happens you have three choices. You can either let it define you, let it destroy you, or you can let it strengthen you.",
+      author: "Dr. Seuss, as quoted in Invent and Wander",
+      category: "Invent and Wander"
+    },
+
+    // ── Timeless Proverbs ─────────────────────────────────────────────────────
+    {
+      text: "Trust in God, but tie your camel.",
+      original: "আল্লাহর উপর ভরসা রাখো, আর তোমার উটটাকে বেঁধে রাখো।",
+      author: "Arabic Proverb",
+      category: "Timeless Proverbs"
+    },
+    {
+      text: "A calm sea never makes a skilled sailor.",
+      original: "শান্ত সমুদ্র কখনো দক্ষ নাবিক তৈরি করে না।",
+      author: "English Proverb",
+      category: "Timeless Proverbs"
+    },
+    {
+      text: "A society grows great when old men plant trees in whose shade they shall never sit.",
+      original: "একটা সমাজ শক্তিশালীভাবে তখনই গড়ে উঠে, যখন সেই সমাজের বৃদ্ধরা এমন গাছ লাগায় যার ছায়ায় তারা কখনো বসবে না।",
+      author: "Greek Proverb",
+      category: "Timeless Proverbs"
+    }
+  ];
+
+  // Fisher-Yates shuffled queue — no repeat until all shown
+  let queue = [];
+  let currentIndex = -1;
+
+  function buildQueue() {
+    queue = [...Array(quotes.length).keys()];
+    for (let i = queue.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [queue[i], queue[j]] = [queue[j], queue[i]];
+    }
+  }
+
+  function nextIndex() {
+    if (queue.length === 0) buildQueue();
+    return queue.pop();
+  }
+
+  function showQuote(idx, animate) {
+    const card = document.getElementById('quoteCard');
+
+    function render() {
+      const q = quotes[idx];
+document.getElementById('quoteText').textContent = q.text;
+
+      const origEl = document.getElementById('quoteOriginal');
+      if (q.original) { origEl.textContent = q.original; origEl.style.display = ''; }
+      else { origEl.style.display = 'none'; }
+
+      document.getElementById('quoteAttribution').textContent = q.author;
+
+      const noteEl = document.getElementById('quoteNote');
+      if (q.note) { noteEl.textContent = q.note; noteEl.style.display = ''; }
+      else { noteEl.style.display = 'none'; }
+
+    }
+
+    if (animate) {
+      card.classList.add('fade-out');
+      setTimeout(() => {
+        render();
+        card.classList.remove('fade-out');
+      }, 280);
+    } else {
+      render();
+    }
+  }
+
+  // Initial load
+  buildQueue();
+  currentIndex = nextIndex();
+  showQuote(currentIndex, false);
+
+  document.getElementById('shuffleBtn').addEventListener('click', () => {
+    currentIndex = nextIndex();
+    showQuote(currentIndex, true);
+  });
+
+  // Navbar toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
